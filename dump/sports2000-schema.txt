@@ -1,0 +1,52 @@
+# Sports2000 Database Schema Summary
+
+This is a summary of the sports2000 database schema. For the full schema definition, see the dump/sports2000.df file.
+
+## Key Tables
+
+### Customer
+- Primary Key: CustNum (INTEGER)
+- Fields: Name, Address, City, State, Country, PostalCode, Contact, Phone, SalesRep, Comments, CreditLimit (DECIMAL), Balance (DECIMAL), Terms, Discount (INTEGER), Fax, EmailAddress
+- Triggers: CREATE, DELETE
+
+### Item
+- Primary Key: ItemNum (INTEGER)
+- Fields: ItemName, CatPage, Price (DECIMAL), CatDescription, OnHand, Allocated, ReOrder, OnOrder, Category1
+- Triggers: CREATE, DELETE, WRITE
+
+### Order
+- Primary Key: OrderNum (INTEGER)
+- Fields: CustNum, OrderDate, PromiseDate, ShipDate, Instructions, Status
+- Triggers: CREATE, DELETE, WRITE
+
+### OrderLine
+- Primary Key: OrderNum, LineNum
+- Fields: ItemNum, Qty, Price, Discount, ShipDate
+- Triggers: CREATE, DELETE, WRITE
+
+### Other Tables
+- BillTo, Bin, Benefits, Employee, Invoice, InvoiceLine, LocalDef, Manufacturer, Order, OrderLine, Payment, PhoneList, PurchaseOrder, PurchaseOrderLine, Ref, SalesRep, State, Vendor, Warehouse, WarehouseBin
+
+## Sequences
+
+- NextCustNum: Initial 1000, Increment 5
+- NextInvNum: Initial 1000, Increment 1
+- NextOrdNum: Initial 1000, Increment 5
+- NextItemNum: Initial 100, Increment 10
+- NextRefNum: Initial 1, Increment 1
+- NextVisitor: Initial 1000, Increment 1
+- NextSupplNum: Initial 0, Increment 1
+- NextLocalDefNum: Initial 0, Increment 1
+- NextWareNum: Initial 0, Increment 1
+- NextBinNum: Initial 0, Increment 1
+- NextPONum: Initial 0, Increment 1
+- NextEmpNum: Initial 0, Increment 1
+- NextInvTransNum: Initial 0, Increment 1
+
+## Database Areas
+
+- Cust_Data: Customer table
+- Order: BillTo, Order, OrderLine tables
+- Inventory: Item, Bin tables
+- Employee: Benefits, Employee tables
+- And several other areas for different functional groups
